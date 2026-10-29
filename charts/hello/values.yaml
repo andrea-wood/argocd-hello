@@ -14,7 +14,7 @@ resources:
   limits:
     memory: 64Mi
 
-message: "Hello from chart v0.2.0"
+message: "Hello from chart v0.3.XXXX"
 
 secret:
   apiKey: "dummy-not-a-real-secret"

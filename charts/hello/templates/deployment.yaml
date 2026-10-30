@@ -24,6 +24,9 @@ spec:
             - containerPort: 80
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: html
+              mountPath: /usr/share/nginx/html
           env:
             - name: API_KEY
               valueFrom:

@@ -15,6 +15,7 @@ spec:
       annotations:
         # Changes when the ConfigMap changes, so pods restart automatically
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+
     spec:
       containers:
         - name: nginx
@@ -29,6 +30,10 @@ spec:
                 secretKeyRef:
                   name: {{ .Release.Name }}-secret
                   key: API_KEY
+      volumes:
+        - name: html
+          configMap:
+            name: {{ .Release.Name }}-html    
       topologySpreadConstraints:
         - maxSkew: 1
           topologyKey: kubernetes.io/hostname
